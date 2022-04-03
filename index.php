@@ -7,29 +7,40 @@
     <title>Document</title>
     <meta name="description" content="サイトキャプションを入力">
     <meta name="keywords" content="サイトキーワードを,で区切って入力">
-    <!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/sanitize.css"> -->
-    <!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/mystyle.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/38f9c31fea.js" crossorigin="anonymous"></script>
     <?php wp_head(); ?>
 </head>
 <body>
     <header class="text-center">
-        <h1 class="h1"><img src="<?php echo get_template_directory_uri(); ?>/images/test-logo.png" width="100px"/></h1>
+        <h1 class="h1"><img src="<?php echo get_template_directory_uri(); ?>/images/test-logo.png" width="50px"/></h1>
     </header>
     <div class="wrap">
         <div id="main" class="col-md-10">
             <div id="catmenu">
                 <nav>
                     <ul>
-                        <li class="text-center">デザイン・ウェブ制作</li>
-                        <li class="text-center">暮らし</li>
-                        <li class="text-center">学び</li>
+                        <li class="text-center">
+                            <i class="fa-solid fa-paintbrush" aria-hidden="true"></i>
+                            デザイン・ウェブ制作
+                        </li>
+                        <li class="text-center">
+                            <i class="fa-solid fa-lemon" aria-hidden="true"></i>
+                            暮らし
+                        </li>
+                        <li class="text-center">
+                        <i class="fa-solid fa-pencil" aria-hidden="true"></i>
+                            学び
+                        </li>
                     </ul>
                 </nav>
             </div>
             <div class="main__content">
                 <div id="new-entry">
-                    <p class="m-0">新着記事</p>
+                    <p class="m-0">
+                        <i class="fa-solid fa-rocket"></i>
+                        新着記事
+                    </p>
                 </div>
                
                 <div class="contentInfo d-flex">
@@ -72,12 +83,26 @@
                     <h4 class="p-3 side-1__title">カテゴリー</h4>
                     <ul class="side-1__content">
                         <li>
+                            <i class="fa-solid fa-laptop" aria-hidden="true"></i>
                             <a href="#">webデザイン入門</a>
                         </li>
                         <li>
+                            <i class="fa-solid fa-tablet-screen-button" aria-hidden="true"></i>
                             <a href="#">wordpress入門</a>
+                            <ul class="side-1__content__child">
+                                <li>
+                                    <a href="">1</a>
+                                </li>
+                                <li>
+                                    <a href="">2</a>
+                                </li>
+                                <li>
+                                    <a href="">3</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
+                            <i class="fa-solid fa-paintbrush"></i>
                             <a href="#">リファレンス</a>
                         </li>
                     </ul>
@@ -91,7 +116,7 @@
                             <dd>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
                         </dl>
                         <p>
-                            <i></i>
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                             ×××.×××.×××@gmail.com
                         </p>
                         <div class="clearfix">
@@ -110,16 +135,35 @@
                         </div>
                     </article>
                 </div>
+                <div class="side-3">
+                    <h4 class="p-3 side-3__title">検索</h4>
+                    <div class="side-3__content">
+                        <form action="" method="get">
+                            <input type="text" name="s" id="s"/>
+                            <button type="submit" class="side-3__btn"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="side-4">
+                    <p>スポンサーリンク</p>
+                    <div></div>
+                </div>
             </div>
         </div>
     </div>
     
     <footer>
-        <div class="hm">トップページへ</div>
+        <div class="hm">
+            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+            トップページへ
+        </div>
         <div class="footer-02">
             <div class="wrap">
-                <p><a href="#" class="gray">利用規約</a></p>
-                <p class="footer-copy">© LOGO</p>
+                <p>
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    <a href="#" class="gray">利用規約</a>
+                </p>
+                <p class="footer-copy">©Copyright 2030 testsite All rights reserved.</p>
             </div>
         </div>
     </footer>
