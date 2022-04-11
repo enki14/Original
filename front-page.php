@@ -29,38 +29,41 @@
                
                 <div class="contentInfo d-flex">
                     <div class="row">
-                        <a href="#"> <!-- 記事をループで取得 -->
-                            <article class="text-center bg-white">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/denshi-maney.png" width="306"/>
-                                <h2 class="cntH2 text-left">HTML/CSS入門</h2>
-                            </article>
-                        </a>  
-                        <a href="#"> <!-- 記事をループで取得 -->
-                            <article class="text-center bg-white">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/electronic-payment2.png" width="306"/>
-                                <h2 class="cntH2 text-left">jQuery入門</h2>
-                            </article>
-                        </a>  
-                        <a href="#"> <!-- 記事をループで取得 -->
-                            <article class="text-center bg-white">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/programmer-1653351_640.png" width="306"/>
-                                <h2 class="cntH2 text-left">XAMPP環境設定</h2>
-                            </article>
-                        </a>  
-                        <a href="#"> <!-- 記事をループで取得 -->
-                            <article class="text-center bg-white">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/video-conference-5167472_640.jpg" width="306"/>
-                                <h2 class="cntH2 text-left">レンタルサーバー５選</h2>
-                            </article>
-                        </a>  
+                    <?php if(have_posts()):
+                            while(have_posts()):
+                                the_post();
+                    ?>
+                        <?php if(has_post_thumbnail()): ?>
+                            <a href="<?php the_permalink(); ?>" class="bg-white"> <!-- 記事をループで取得 -->
+                                <article class="text-center">
+                                    <?php the_post_thumbnail(); ?>
+                                    <h2 class="cntH2 text-left"><?php the_title(); ?></h2>
+                                </article>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?php the_permalink(); ?>" class="bg-white"> <!-- 記事をループで取得 -->
+                                <article class="text-center bg-white">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png"/>
+                                    <h2 class="cntH2 text-left"><?php the_title(); ?></h2>
+                                </article>
+                            </a>
+                        <?php endif; ?> 
+                    <?php endwhile; endif; ?>
                     </div>
                 </div>
-                <ul class="pgNation">
-                    <li>1</li> <!-- ページをループで取得 -->
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                </ul>
+                <!-- <div class="pgNation"> -->
+                    <?php
+                        the_posts_pagination(
+                            array(
+                                'mide_size' => 5,
+                                'prev_next' => true,
+                                'prev_text' => __('<i class="fa-solid fa-angle-left"></i>'),
+                                'next_text' => __('<i class="fa-solid fa-angle-right"></i>'),
+                                'type' => 'list'
+                            )    
+                        );
+                    ?>
+                <!-- </div> -->
             </div>
             <?php get_sidebar(); ?>
         </div>

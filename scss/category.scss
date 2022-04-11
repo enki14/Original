@@ -1,3 +1,6 @@
+$acsent: #f89174;
+
+
 
 body{
     background-color: #f0ebeb !important;
@@ -33,17 +36,23 @@ header{
         }
 
 
-        span span {
-            font-size: 17px;
-            color: #9e9c9c;
-            padding: 0 0 0 4px;
+        span{
 
-            a{
-                text-decoration: none;
+            span {
+                font-size: 17px;
                 color: #9e9c9c;
+                padding: 0 0 0 4px;
+    
+                a{
+                    text-decoration: none;
+                    color: #9e9c9c;
+                }
             }
 
-        }
+            i {
+                vertical-align: 0;
+            }
+        } 
         
     }
 
@@ -66,7 +75,7 @@ header{
 
                 .main__title{
                     position: relative;
-                    margin: 0 1.5%;
+                    margin: 4px 0;
                     text-align: center;
                     border-bottom: 2px solid #000;
                     
@@ -85,6 +94,49 @@ header{
 
             }
 
+
+            .term-name{
+                overflow: auto;
+                width: 100%;
+
+                ul{
+                    padding: 0;
+
+                    
+                    li{
+                        float: left;
+                        display: inline-block;
+                        background-color: #fff;
+                        padding: 9px 10px;
+                        margin: 10px 10px 0 0;
+                        line-height: 1;
+
+
+                        a{
+                            text-decoration: none;
+                            color: #808080;
+                            font-size: 14.45px;
+
+                            &::before{
+                                font-family: FontAwesome;
+                                content: "\f0da";
+                                padding-right: 4px;
+                            }
+
+                            &:hover{
+                                color: $acsent;
+                                transition: all .3s ease-in-out;
+                            }
+                        }
+                        
+                        
+                        
+                    }
+    
+                }
+                
+            }
+
             .content__catInfo{
                 .row article{
                     margin: 0 1% 17px;
@@ -98,7 +150,6 @@ header{
                     background-color: #fff;
     
                     &:hover{
-                        text-decoration: none;
                         transition: all ease-in-out .3s;
                         box-shadow: 0 10px 20px -5px rgb(0 0 0 / 20%);
                         transform: translateY(-2px);
@@ -107,6 +158,7 @@ header{
                     a{
                         display: table;
                         vertical-align: middle;
+                        text-decoration: none;
 
     
     
@@ -116,7 +168,8 @@ header{
                             vertical-align: middle;
                             // アスペクト比指定
                             aspect-ratio: 100 / 100;
-                            max-width: 100%;
+                            width: 100px;
+                            height: 100px;
                         }
     
                         h2{
@@ -155,21 +208,28 @@ header{
                 margin-right: 0;
             }
 
-            .pgNation{
+            .pgNation ul{
                 width: 245px;
                 height:79px;
                 font-weight: bold;
                 overflow: hidden;
+
+                li{
+                    width:auto;
+                    float: left;
+                    line-height: 79px;
+                    color:#f89174;
+                    margin: 2px 2px 2px 0;
+                    padding: 6px 12px;
+
+                    a{
+                        text-decoration: none;
+                        color:#f89174;
+                    }
+                }
             }
             
-            .pgNation li{
-                width:auto;
-                float: left;
-                line-height: 79px;
-                color:#f89174;
-                margin: 2px 2px 2px 0;
-                padding: 6px 12px;
-            }
+            
             
         }
 
@@ -193,7 +253,7 @@ header{
                     padding: 9px 15px !important;
                 }
 
-                ul{
+                .side-1__parent{
                     padding: 6px 10px 14px 25px;
                     list-style: none;
                     
@@ -216,6 +276,36 @@ header{
                                 text-decoration: none;
                             }
                         }
+
+                        .side-1__children{
+                            padding: 6px 10px 14px 25px;
+                            list-style: none;
+                            
+                            .children__li{
+                                display: block;
+                                padding: 7px 0;
+    
+                                .children__a{
+                                    color: #ccc;
+                                    font-size: 15px;
+
+                                    &::before{
+                                        font-family: FontAwesome;
+                                        content: '\f105';
+                                        padding-right: 6px;
+                                        margin-right: 2px;
+                                        font-weight: 400;
+                                    }
+                
+                                    &:hover{
+                                        text-decoration: none;
+                                        color: $acsent;
+                                        transition: all .3s ease-in-out;
+                                    }
+                                }
+                            }
+                        }
+
                     }
                 
                 }
@@ -322,6 +412,7 @@ header{
                     font-weight: bold;
                     color: #fff;
                     height: 41.2px;
+                    margin-bottom: 0;
                     padding: 9px 15px !important;
                 }
 
@@ -336,22 +427,39 @@ header{
                         width: 290px;
                         height: 40px;
 
-                        input{
+                        input[type=text]{
                             border: none;
                             float:left;
+                            padding: 10px 13px;
+                            font-size: 14px;
+                            width: 250px;
+                            cursor: pointer;
                             
+
+                            &:focus{
+                                outline: none;
+                                background: #fff;
+                            }
                         }
     
                         button{
                             border: none;
                             float: right;
                             position: absolute;
-                            right: 5px;
+                            right: 0;
                             top: 0;
+                            padding: 9px 5px;
+                            width: 40px;
                             vertical-align: top;
+                            line-height: 23px;
                             background: 0 0;
                             font-size: 21px;
                             color: gray;
+
+                            &:focus{
+                                outline: none;
+                                
+                            }
                         }
                     }
                 }

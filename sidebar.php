@@ -1,31 +1,34 @@
             <div class="side">
                 <div class="side-1">
                     <h4 class="p-3 side-1__title">カテゴリー</h4>
-                    <ul class="side-1__content">
-                        <li>
-                            <i class="fa-solid fa-laptop" aria-hidden="true"></i>
-                            <a href="#">webデザイン入門</a>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-tablet-screen-button" aria-hidden="true"></i>
-                            <a href="#">wordpress入門</a>
-                            <ul class="side-1__content__child">
-                                <li>
-                                    <a href="">1</a>
-                                </li>
-                                <li>
-                                    <a href="">2</a>
-                                </li>
-                                <li>
-                                    <a href="">3</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-paintbrush"></i>
-                            <a href="#">リファレンス</a>
-                        </li>
-                    </ul>
+                    <?php 
+                    echo '<ul class="side-1__parent">';
+                            $args = array(
+                                'parent' => 0
+                            );
+                            $parent_categories = get_categories($args);
+                            foreach($parent_categories as $parent_category){
+                                echo '<li>'. $parent_category->description . 
+                                '<a href="' . esc_url(get_category_link($parent_category->term_id)) .'">' 
+                                . $parent_category->name . '</a>';
+
+                                $args = array(
+                                    'parent' => $parent_category->term_id
+                                );
+                                $children_categories = get_categories($args);
+                                if($children_categories != ''){
+                                    echo '<ul class="side-1__children">';
+                                    foreach($children_categories as $children_category){
+                                        echo '<li class="children__li"><a href="' 
+                                        . esc_url(get_category_link($children_category->term_id)) . '" 
+                                        class="children__a">' . $children_category->name . '</a></li>';
+                                    }
+                                    echo '</ul>';
+                                }
+                                echo '</li>';
+                            }
+                    echo '</ul>';
+                    ?>
                 </div>
                 <div class="side-2">
                     <h4 class="p-3 side-2__title">運営者について</h4>
@@ -58,10 +61,7 @@
                 <div class="side-3">
                     <h4 class="p-3 side-3__title">検索</h4>
                     <div class="side-3__content">
-                        <form action="" method="get">
-                            <input type="text" name="s" id="s"/>
-                            <button type="submit" class="side-3__btn"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
-                        </form>
+                        <?php get_search_form(); ?>
                     </div>
                 </div>
                 <?php if(!is_category()): ?>
