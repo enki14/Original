@@ -131,6 +131,9 @@ header{
                 .thumbClass{
                     text-align: center;
                     margin-bottom: 2em;
+                    max-width: 100%;
+                    width: 100%;
+                    height: auto;
                 }
 
 
@@ -206,6 +209,117 @@ header{
                 padding: 0 64px 40px;
 
                 aside{
+
+                    .kanren{
+                        padding: 5px 0;
+                        margin-bottom: 15px;
+                        border-bottom: solid 3px #f0ebeb;
+                        
+
+                        .clearfix::after{
+                            content: '';
+                            clear: both;
+                            display: block;
+                        }
+
+                        h4{
+                            margin-bottom: 0;
+                            padding-bottom: 0;
+                            letter-spacing: 1.4;
+
+                            img{
+                                width: 70px;
+                                margin-right: 10px;
+                            }
+
+                            &::after{
+                                vertical-align: middle;
+                                content: '関連する記事';
+                                font-weight: 700;
+                                color: #565656;
+                            }
+                            
+                            
+
+                        }
+                        
+                    }
+
+                    .kanren-kizi{
+                        position: relative;
+                        background: #f3f5f6;
+                        padding: 15px 10px;
+
+                        &::after{
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            border-width: 0 16px 16px 0;
+                            border-style: solid;
+                            border-color: #fff #fff #e7e7e7;
+                            box-shadow: -1px 1px 1px rgb(0 0 0 / 15%);
+                        }
+
+                        .kanren-kizi__p{
+                            font-weight: 600;
+                            text-align: left;
+                            font-size: 17px;
+                            letter-spacing: 1.4;
+
+                            &::before{
+                                font-weight: bold;
+                                padding: 10px;
+                                content: '\f00c';
+                                font-family: FontAwesome;
+                                color: blue;
+                                
+                            }
+                        }
+
+                        .kizi{
+                            height: 100px;
+                            max-width: 400px;
+                            display: table;
+                            margin: 1em 0;
+                            text-decoration: none;
+
+
+                            img{
+                                width: 100px;
+                                height: 100px;
+                                object-fit: cover;
+                                border: solid 2px #e2dddd;
+                                display: table-cell;
+                            }
+
+                            .kizi-title{
+                                background: #fff;
+                                height: 100px;
+                                padding: 0 15px 0 5px;
+                                border: solid 2px #f0ebeb;
+                                border-left: 0;
+                                display: table-cell;
+                                transition: all ease-in-out .3s;
+                                vertical-align: middle;
+
+                                &:hover{
+                                    color: gray;
+                                    background: #f0ebeb; 
+
+                                }
+
+                                p{
+                                    font-weight: 600;
+                                    color: #333;
+                                
+                                }
+                                
+                            }
+                        }
+                    }
+
+
                     .ss{
                         .clearfix{
                             &::after{
@@ -264,13 +378,42 @@ header{
 
                         .sspkt{
                             background: #f87474;
-                        }
-
-
-
-
-                        
+                        } 
                     }
+
+                    .postauth{
+                        text-align: center;
+                        font-weight: 700;
+                        background: #fff;
+                        letter-spacing: .05em;
+                        padding: 1.7em 0 0.5em;
+
+                        .postauth__a{
+                            color: #74c1f8;
+                            transition: all ease-in-out .3s;
+
+                            &:hover{
+                                text-decoration: none;
+                                color: #fff;
+                            }
+
+                            .parent-span{
+                                border: solid 2px #74c1f8;
+                                padding: 8px 10px;
+                                border-radius: 5px;
+                                font-size: .83em;
+
+                                &:hover{
+                                    background: #74c1f8;
+                                }
+
+                                i{
+                                    vertical-align: 0;
+                                }
+                            }
+                        }
+                    }
+                    
                 }
             }
 

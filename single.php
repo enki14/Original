@@ -22,7 +22,7 @@
             </header>
             <div class="single-content">
                 <!-- サムネイル出力は第1がサイズ、第2がclass付与 -->
-                <?php the_post_thumbnail(array(552, 312), array('class'=> 'thumbClass')); ?>
+                <?php the_post_thumbnail('', array('class'=> 'thumbClass')); ?>
                 <div>
                     <?php
                         if(the_content()):
@@ -34,6 +34,18 @@
             </div>
             <footer class="single-footer">
                 <aside>
+                    <div class="kanren">
+                        <h4><img src="<?php $upload_dir = wp_upload_dir(); 
+                        echo $upload_dir['baseurl'] . $upload_dir['subdir'] . '/books.png'; ?>" 
+                        alt="books"></h4>
+                    </div>
+                    <div class="kanren-kizi my-4">
+                        <p class="kanren-kizi__p">wordpressを学びたいはこちらが参考になるかも</p>
+                        <a href="#" class="kizi">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png" alt="no-image" />
+                            <div class="kizi-title"><p>ここに参考の記事タイトルが入ります</p></div>
+                        </a>
+                    </div>
                     <div class="ss">
                         <ul class="clearfix">
                             <li class="sstw">
@@ -65,6 +77,17 @@
                                 </a>
                             </li>
                         </ul>
+                    </div>
+                    <div class="postauth">
+                        <a href="<?php echo esc_url(home_url()); ?>" class="postauth__a" rel="nofollow">
+                            <span class="parent-span">
+                                <i class="fa-brands fa-twitter fa-lg"></i>
+                                著者：
+                                <span>
+                                    運営者さん
+                                </span>
+                            </span>
+                        </a>
                     </div>
                 </aside>
             </footer>
