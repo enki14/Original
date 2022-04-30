@@ -8,7 +8,7 @@
     <meta name="description" content="サイトキャプションを入力">
     <meta name="keywords" content="サイトキーワードを,で区切って入力">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <?php if(is_category() or is_search()): ?>
+    <?php if(is_category() or is_search() or is_page()): ?>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
     <?php elseif(is_single()): ?>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/single.css">
@@ -18,7 +18,8 @@
     <script src="https://kit.fontawesome.com/38f9c31fea.js" crossorigin="anonymous"></script>
     <?php wp_head(); ?>
 </head>
-<body>
+<!-- それぞれのページ毎にbodyのclassを設定する -->
+<body <?php body_class(); ?>>
     <header class="text-center">
         <h1 class="h1"><img src="<?php echo get_template_directory_uri(); ?>/images/test-logo.png" width="50px"/></h1>
     </header>

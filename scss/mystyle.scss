@@ -1,5 +1,18 @@
 $acsent: #f89174;
 
+// mixinでメディアクエリを管理する
+$breakpoint: (
+    tab: 'screen and (max-width: 991px)',
+    sp: 'screen and (max-width: 600px)'
+);
+
+// $bpは$breakpointのそれぞれのキーを示している
+// map-get関数でマップの値を取得する
+@mixin mq($bp){
+    @media #{map-get($breakpoint, $bp)} {
+        @content;
+    }
+}
 
 
 
@@ -15,6 +28,7 @@ header{
         margin: 0;
     }
 }
+
 
 .wrap{
     max-width: 1239px;
@@ -43,7 +57,7 @@ header{
 
         #catmenu{
             margin: 0 .5em 1em;
-            width: 663px;
+            width: 683px;
 
             nav{
                 overflow: hidden;
@@ -60,7 +74,7 @@ header{
                         border-left: 2px solid #f0ebeb;
     
                         a{
-                            color:#000;
+                            color:#b5b5b5;
                             font-weight: 700;
                         
                             &:hover{
@@ -84,8 +98,23 @@ header{
                     li:nth-child(3){
                         width: 26%;
                         display: inline-block;
-                        color: #b5b5b5;
-                        border-bottom: solid 2px #f0ebeb;
+                        border-bottom: solid 3px #fff;
+
+                        &:hover{
+                            border-bottom: solid 3px $acsent;
+                            transition: all .2s ease-in-out;
+                            
+
+                            a{
+                                color: $acsent;
+
+                                i{
+                                    color: $acsent;
+                                }
+                            }
+
+                        }
+                        
                     }
                 }
             }
@@ -94,7 +123,7 @@ header{
 
         .main__content{
             float:left;
-            width: 680px;
+            width: 700px;
             
             
             #new-entry{
@@ -165,42 +194,44 @@ header{
                 margin-right: 0;
             }
 
-            nav ul{
-                width: 245px;
-                height:79px;
-                font-weight: bold;
-                overflow: hidden;
-            
-                li{
-                    float: left;
-                    line-height: 79px;
-                    color:#f89174;
-                    margin: 2px 2px 2px 0;
-                    padding: 6px 12px;
-                    font-size: 17px;
-                    
+            nav{
+                margin: 0 0 120px;
 
-                    span{
-                        background-color: $acsent;
-                        padding: 10px 16px;
-                        margin: 1em 0;
-                        color: #fff;
-                        width: 45px;
-                        height: 45px;
-                        border-radius: 50%;
-                        text-align: center;
-
-                    }
-
-                    a{
-                        text-decoration: none;
+                ul{
+                    width: 245px;
+                    height:79px;
+                    font-weight: bold;
+                    overflow: hidden;
+                
+                    li{
+                        float: left;
+                        line-height: 79px;
                         color:#f89174;
-
+                        margin: 2px 2px 2px 0;
+                        padding: 6px 12px;
+                        font-size: 17px;
+                        
+    
+                        span:nth-child(odd){
+                            background-color: $acsent;
+                            padding: 10px 16px;
+                            margin: 1em 0;
+                            color: #fff;
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            text-align: center;
+    
+                        }
+    
+                        a{
+                            text-decoration: none;
+                            color:#f89174;
+    
+                        }
                     }
                 }
-                
-            }
-            
+            } 
             
         }
 
@@ -223,6 +254,12 @@ header{
                     height: 41.2px;
                     padding: 9px 15px !important;
 
+                    &::before{
+                        color: #fff;
+                        padding: 0 8px 0 10px;
+                        content: '\f279';
+                        font-family: FontAwesome;
+                    }
                     
                 }
 
@@ -464,7 +501,115 @@ header{
         }
 
     }
+}
 
+@include mq(tab){
+    .wrap{
+        max-width: 700px;
+
+        
+        .col-md-10{
+            padding-left: 0;
+            padding-right: 0;
+
+            .side{
+                width: 100%;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+    
+                .side-1,
+                .side-2,
+                .side-3,
+                .side-4{
+                    width: 49% !important;
+                    float: left;
+                }
+    
+                .side-1{
+                    margin-right: 2%;
+                }
+            }
+        }
+
+    }
+}
+
+@include mq(sp){
+    .wrap{
+        max-width: 450px;
+        margin: 0 .3em;
+        padding-top: 9px;
+
+        
+
+        .col-md-10{
+            padding-left: 0;
+            padding-right: 0;
+
+            #catmenu{
+                width: 100% !important;
+                margin: 0 0.34em 1em !important;
+
+                nav{
+                    width: 355px;
+
+                    ul{
+                        margin-bottom: 0;
+    
+                        li{
+                            font-size: 11px;
+                            height: 33px !important;
+                            line-height: 30px;
+                        }
+                    } 
+                }
+
+            }
+
+            .main__content{
+                width: 100% !important;
+                font-size: .82em;
+
+                .contentInfo .row a{
+                    margin: 0 1% 10px !important;
+
+                    article{
+                        img{
+                            width: 157px !important;
+                            height: 90px !important;
+                        }
+
+                        h2{
+                            font-size: 14px !important;
+                        }
+                    }
+                }
+            }
+
+
+
+            .side{
+                width: 100%;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+    
+                .side-1,
+                .side-2,
+                .side-3,
+                .side-4{
+                    width: 100% !important;
+                    
+                }
+    
+                .side-1{
+                    margin-right: 0;
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
 }
 
 
@@ -475,8 +620,12 @@ footer{
     .hm{
         font-weight: 700;
         font-size: 1.2em;
-        color: #807171;
         padding: 5px 0;
+
+        a{
+            color: #807171;
+            text-decoration: none;
+        }
     }
 
     .footer-02{

@@ -1,6 +1,18 @@
 $acsent: #f89174;
 
+// mixinでメディアクエリを管理する
+$breakpoint: (
+    tab: 'screen and (max-width: 991px)',
+    sp: 'screen and (max-width: 600px)'
+);
 
+// $bpは$breakpointのそれぞれのキーを示している
+// map-get関数でマップの値を取得する
+@mixin mq($bp){
+    @media #{map-get($breakpoint, $bp)} {
+        @content;
+    }
+}
 
 
 body{
@@ -73,7 +85,7 @@ header{
             border-radius: 10px;
             padding-top: 15px;
             float: left;
-            width: 680px;
+            width: 700px;
 
 
             header{
@@ -444,7 +456,13 @@ header{
                     height: 41.2px;
                     padding: 9px 15px !important;
 
-                    
+                    &::before{
+                        color: #fff;
+                        padding: 0 8px 0 10px;
+                        content: '\f279';
+                        font-family: FontAwesome;
+                    }
+
                 }
 
                 .side-1__parent{
@@ -686,6 +704,37 @@ header{
 
     }
 
+}
+
+
+@include mq(tab){
+    .wrap{
+        max-width: 700px;
+    
+        .col-md-10{
+            padding-left: 0;
+            padding-right: 0;
+
+            .side{
+                width: 100%;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+    
+                .side-1,
+                .side-2,
+                .side-3,
+                .side-4{
+                    width: 49% !important;
+                    float: left;
+                }
+    
+                .side-1{
+                    margin-right: 2%;
+                }
+            }
+        }
+    }
 }
 
 

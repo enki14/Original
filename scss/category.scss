@@ -1,10 +1,295 @@
 $acsent: #f89174;
 
+// mixinでメディアクエリを管理する
+$breakpoint: (
+    tab: 'screen and (max-width: 991px)',
+    sp: 'screen and (max-width: 600px)'
+);
 
+// $bpは$breakpointのそれぞれのキーを示している
+// map-get関数でマップの値を取得する
+@mixin mq($bp){
+    @media #{map-get($breakpoint, $bp)} {
+        @content;
+    }
+}
 
 body{
     background-color: #f0ebeb !important;
 }
+
+
+/******************** 「暮らし」のページエリア　↓↓↓　 ****************************/
+body.category-17{
+    background-color: #ffedcb !important;
+
+    header{
+        box-shadow: 0 3px 4px #d2d0d0;
+        border-bottom: none;
+    }
+
+    .wrap{
+        text-align: center;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 0;
+
+        #main{
+            .page{
+                margin-bottom: 20px;
+                border-radius: 10px;
+                padding-top: 15px;
+                float: left;
+                width: 100%;
+
+
+
+                .header-content{
+                    background-color: #ffedcb;
+                    box-shadow: 0;
+                    margin-bottom: 10px;
+
+
+                    h1{
+                        padding: 4px 0 4px;
+                        font-size: 28px;
+                        font-weight: 700;
+                        letter-spacing: .4px;
+                        margin-bottom: 0;
+                        line-height: 1.68;
+
+                        .post-subtitle{
+                            font-size: 15px;
+                            display: block;
+                        }
+                    }
+
+                    
+                    .thumb-eria{
+                        margin-left: auto;
+                        margin-right: auto;
+
+                        img{
+                            width: 400px;
+                            height: auto;
+                        }
+                    }
+
+                    .post-disc{
+                        font-weight: bold;
+                        font-size: 15px;
+                        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+                        margin-top: 20px;
+
+                    }
+    
+                }
+
+
+
+                .page-content{
+
+
+                    h2{
+                        font-size: 25px;
+                        color: #555;
+                        margin: 35px 0 20px;
+                        padding-bottom: 19px;
+                        font-weight: bold;
+                        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+                    }
+
+                    .content-eria{
+                        overflow: hidden;
+    
+                        .row{
+                            margin-left: 0;
+                            margin-right: 0;
+    
+                            article{
+                                margin: 0 1% 17px 1%;
+                                width: 48%;
+                                padding: 10px;
+                                margin: 0 1% 17px;
+                                position: relative;
+                                display: block;
+                                float: left;
+                                cursor: pointer;
+                                background-color: #fff;
+        
+                                .clearfix::before{
+                                    content: '';
+                                    display: inline-table;
+                                    clear: both;
+                                }
+                
+                                &:hover{
+                                    transition: all ease-in-out .3s;
+                                    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 20%);
+                                    transform: translateY(-2px);
+                                }
+                
+                                a{
+                                    display: table;
+                                    vertical-align: middle;
+                                    text-decoration: none;
+            
+                
+                
+                                    img{
+                                        object-fit: cover;
+                                        display: table-cell;
+                                        vertical-align: middle;
+                                        // アスペクト比指定
+                                        aspect-ratio: 100 / 100;
+                                        width: 100px;
+                                        height: 100px;
+                                        position: relative;
+                                    }
+                
+                                    h3{
+                                        vertical-align: middle;
+                                        display: table-cell;
+                                        height: 84px;
+                                        color: #000;
+                                        font-size: 1em;
+                                        font-weight: bold;
+                                        line-height: 1.4;
+                                        padding-left: 12px;
+                                    }
+                
+                                }
+        
+                                .posted-date{
+                                    position: absolute;
+                                    right: 9px;
+                                    bottom: 9px;
+                                    text-align: left;
+                                    float: right;
+                                    color: #bfbfbf;
+                                    font-weight: 700;
+                                    font-size: 13px;
+                                    font-family: "Avenir","Arial",sans-serif;
+                                    padding-left: 20px;
+                
+                                    time{
+                                        letter-spacing: .07em;
+                                    }
+                                    
+                
+                                    i{
+                                        width: 20px;
+                                        height: 20px;
+                                        line-height: 20px;
+                                        font-size: 13px;
+                                        text-align: center;
+                                        vertical-align: top;
+                                    }
+                                    
+                                }
+                            }
+    
+                        }
+    
+                    }
+                }
+                
+            }
+        }
+    }
+
+    .breadcrumb-page{
+        background: #ee8d72;
+        padding: 8px 12px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+
+        span{
+            padding-right: 4px;
+            margin-left: 4px;
+
+            i{
+                color: #ffc3b2;
+                font-size: 13px;
+                
+            }
+        }
+        
+
+        a{
+            color: #fff;
+        }
+
+    }
+
+
+    footer{
+        .hm{
+            background: #fff;
+        }
+
+        .footer-02{
+            border-top: 1px #efefef solid;
+        }
+    }
+
+    @include mq(tab){
+
+        .wrap{
+            max-width: 750px !important;
+        
+            .col-md-10{
+                padding-left: 0;
+                padding-right: 0;
+
+    
+                .breadcrumb-page{
+                    span i{
+                        padding-right: 4px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    @include mq(sp){
+
+        .wrap{
+            max-width: 375px !important;
+
+            #main{
+                width: 100% !important;
+
+                article{
+                    width: 100% !important;
+
+                    .header-content{
+                        width: 100%;
+
+                        .thumb-eria{
+                            width: 100%;
+                        }
+                    }
+
+
+                    .page-content{
+                        .content-eria{
+                            .row article{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+/******************** 「暮らし」のページエリア　↑↑↑　 ****************************/
 
 header{
     background-color: #fff;
@@ -68,7 +353,7 @@ header{
 
         .main__content{
             float:left;
-            width: 680px;
+            width: 700px;
             
             section{
                 margin: 15px 0 25px 0;
@@ -208,32 +493,47 @@ header{
                 margin-right: 0;
             }
 
-            .pgNation ul{
-                width: 245px;
-                height:79px;
-                font-weight: bold;
-                overflow: hidden;
+            .pagination{
+                margin: 0 0 120px;
 
-                li{
-                    width:auto;
-                    float: left;
-                    line-height: 79px;
-                    color:#f89174;
-                    margin: 2px 2px 2px 0;
-                    padding: 6px 12px;
-
-                    a{
-                        text-decoration: none;
-                        color:#f89174;
+                ul{
+                    width: 245px;
+                    height:79px;
+                    font-weight: bold;
+                    overflow: hidden;
+    
+                    li{
+                        width:auto;
+                        float: left;
+                        line-height: 79px;
+                        color: $acsent;
+                        margin: 2px 2px 2px 0;
+                        padding: 6px 12px;
+    
+                        span{
+                            background-color: $acsent;
+                            padding: 10px 16px;
+                            margin: 1em 0;
+                            color: #fff;
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            text-align: center;
+    
+                        }
+    
+                        a{
+                            text-decoration: none;
+                            color: $acsent;
+    
+                        }
                     }
                 }
-            }
-            
-            
+            } 
             
         }
 
-        
+
         .side{
             float: left;
             margin-left: 30px;
@@ -251,6 +551,13 @@ header{
                     font-weight: bold;
                     color: #fff;
                     padding: 9px 15px !important;
+
+                    &::before{
+                        color: #fff;
+                        padding: 0 8px 0 10px;
+                        content: '\f279';
+                        font-family: FontAwesome;
+                    }
                 }
 
                 .side-1__parent{
@@ -492,6 +799,121 @@ header{
 
     }
 
+}
+
+
+@include mq(tab){
+    .wrap{
+        max-width: 700px;
+    
+        .col-md-10{
+            padding-left: 0;
+            padding-right: 0;
+
+            .side{
+                width: 100%;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+    
+                .side-1,
+                .side-2,
+                .side-3,
+                .side-4{
+                    width: 49% !important;
+                    float: left;
+                }
+    
+                .side-1{
+                    margin-right: 2%;
+                }
+            }
+        }
+    }
+}
+
+
+@include mq(sp){
+    .wrap{
+        max-width: 450px;
+        margin: 0 .3em;
+        padding-top: 9px;
+
+        .breadcrumb{
+            padding-left: 10px;
+
+            span{
+                font-size: 12px;
+            }
+
+            span span{
+                font-size: 14px;
+                padding-left: 0;
+            }
+        }
+
+        .col-md-10{
+            padding-left: 10px;
+            padding-right: 10px;
+
+            
+            .main__content{
+                width: 100% !important;
+                font-size: .82em;
+
+                section{
+                    
+                    .main__title{
+                        text-align: left !important;                        
+                    }
+
+                }
+
+                .content__catInfo .row{
+
+                    article{
+                        width: 100% !important;
+
+                        a{
+
+                            img{
+                                width: 90px !important;
+                                height: 90px !important;
+                            }
+    
+                            h2{
+                                font-size: 14px !important;
+                                line-height: 1.4;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+
+
+            .side{
+                width: 100%;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+    
+                .side-1,
+                .side-2,
+                .side-3,
+                .side-4{
+                    width: 100% !important;
+                    
+                }
+    
+                .side-1{
+                    margin-right: 0;
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
 }
 
 

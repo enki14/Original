@@ -17,11 +17,12 @@
             </section>
             <div class="content__catInfo d-flex">
                 <div class="row">
-                <?php 
-                    // 子カテゴリの場合はterm_idを指定する
+                <?php
+                    // 子カテゴリがない親カテゴリはcategory_nameも一緒にセットする
                     $cat_posts = get_posts(array(
                         'post_type' => 'post',
-                        'category' => $term_id,
+                        'category' => $parent_id,
+                        'category_name' => $slug, 
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'posts_per_page' => -1
@@ -42,7 +43,7 @@
                         </a>
                         <span><i class="fa fa-clock-o" aria-hidden="true"></i><time><?php the_time('Y/m/d') ?></time></span>
                     </article>
-                    <?php endforeach; endif; wp_reset_postdata(); ?>
+                <?php endforeach; endif; wp_reset_postdata(); ?>
                 </div>
             </div>
             <?php

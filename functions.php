@@ -36,7 +36,7 @@ add_action( 'manage_posts_custom_column', 'customize_manage_posts_custom_column'
 
 
 
-// 「外観」の「ウィジェット」追加
+// 管理画面の「外観」の「ウィジェット」追加
 function sample_widgets(){
   register_sidebar(array(
     'name' => '共通サイドバー',
@@ -49,6 +49,40 @@ function sample_widgets(){
   ));
 }
 add_action('widgets_init', 'sample_widgets');
+
+
+// 固定ページにcategory-life.phpを読み込んで、「暮らし」のカテゴリ一覧を表示させた
+function include_shortcode($params = array()){
+  shortcode_atts(array(
+    'file' => 'default'
+  ), $params);
+  ob_start();
+  include(TEMPLATEPATH. '/shortcode/category-life.php');
+  return ob_get_clean();
+}
+add_shortcode('life-list', 'include_shortcode');
+
+
+
+// オリジナルのjsファイルは ➀ 登録して
+function register_script(){
+  wp_register_script('header_fixed', get_template_directory_uri() . '/js/header-fixed.js');
+}
+add_action('wp_enqueue_scripts', 'register_script');
+
+// ➁ 読み込ませる
+function my_script() {
+  wp_deregister_script('jquery');
+  // jqueryそのものの読み込み
+  wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-2.2.4.js', array(), '2.2.4');
+
+  // 投稿ページのみ該当のjsファイルを読み込む
+  // ハンドル名はregister_scriptの時と同じ
+  if(is_single()){
+    wp_enqueue_script('header_fixed', get_template_directory_uri() . '/js/header-fixed.js', array('jquery'));
+  }
+}
+add_action( 'wp_enqueue_scripts', 'my_script' );
 
 
 

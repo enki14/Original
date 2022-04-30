@@ -1,7 +1,9 @@
-<footer>
+    <footer>
         <div class="hm">
-            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
-            トップページへ
+            <a href="<?php echo esc_url(home_url('/')); ?>">
+                <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+                トップページへ
+            </a>
         </div>
         <div class="footer-02">
             <div class="wrap">
