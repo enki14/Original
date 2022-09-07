@@ -33,7 +33,7 @@
                 <div class="side-2">
                     <h4 class="p-3 side-2__title">運営者について</h4>
                     <article>
-                        <img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . $upload_dir['subdir']; ?>/original.jpg" />
+                        <img src="<?php $upload_dir = wp_upload_dir(); echo esc_url($upload_dir['baseurl'] . '/2022/04/original.jpg') ?>" />
                         <dl>
                             <dt>運営者さん</dt>
                             <dd>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>

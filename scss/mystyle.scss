@@ -198,7 +198,7 @@ header{
                 margin: 0 0 120px;
 
                 ul{
-                    width: 245px;
+                    width: 300px;
                     height:79px;
                     font-weight: bold;
                     overflow: hidden;
@@ -208,7 +208,7 @@ header{
                         line-height: 79px;
                         color:#f89174;
                         margin: 2px 2px 2px 0;
-                        padding: 6px 12px;
+                        padding: 6px 6px;
                         font-size: 17px;
                         
     
@@ -259,6 +259,8 @@ header{
                         padding: 0 8px 0 10px;
                         content: '\f279';
                         font-family: FontAwesome;
+                        top: 50%;
+                        left: 50%;
                     }
                     
                 }
@@ -536,6 +538,11 @@ header{
 }
 
 @include mq(sp){
+
+    header{
+        padding: 5px 0 0;
+    }
+
     .wrap{
         max-width: 450px;
         margin: 0 .3em;
@@ -624,7 +631,6 @@ footer{
 
         a{
             color: #807171;
-            text-decoration: none;
         }
     }
 
@@ -643,7 +649,6 @@ footer{
 
             .gray{
                 font-size: 15px;
-                text-decoration: none;
                 color: #6f6f6f;
 
             }

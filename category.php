@@ -2,10 +2,8 @@
     <?php 
         $category = get_the_category();
         $cat_now = $category[0];
-        $slug = $cat_now->slug;
         $term_id = $cat_now->term_id;
         $parent_id = $cat_now->parent;
-        global $post;
 
         $obj = get_queried_object();
         // get_term_childrenで子カテゴリがあるかどうかの判定
@@ -23,3 +21,9 @@
         endif;
     ?>
 <?php get_footer(); ?>
+<script>
+    // ページネーションの「 … 」を削除する
+    jQuery(function(){
+        jQuery('.dots').parent('li').hide();
+    });
+</script>

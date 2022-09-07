@@ -148,6 +148,17 @@ header{
                     height: auto;
                 }
 
+                .kjk_fixed_headline {
+                    width: 100%;
+                    position: fixed;
+                    top: 0;
+                    padding-left: 10px;
+                    background-color: #899cff;
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: bold;
+                    z-index: 50;
+                  }
 
                 h2{
                     background: #f7f7f7;
@@ -725,7 +736,7 @@ header{
                 .side-2,
                 .side-3,
                 .side-4{
-                    width: 49% !important;
+                    width: 49%;
                     float: left;
                 }
     
@@ -738,6 +749,110 @@ header{
 }
 
 
+@include mq(sp){
+    header{
+        background: $acsent !important;
+        padding: 5px 0 0;
+
+        // svg内の色の変更
+        h1 svg ellipse:nth-child(1){
+            fill: white;
+        }
+
+        h1 svg ellipse:nth-child(2){
+            fill: $acsent;
+        }
+
+        h1 svg path{
+            fill: white;
+        }
+    }
+
+    .wrap{
+        width: 100% !important;
+
+        .breadcrumb{
+            font-size: 13px;
+            text-align: center;
+            padding: 10px 5px;
+            border-radius: 0;
+            display: block;
+        }
+
+        #main{
+
+            .single{
+                border-radius: 0;
+            }
+
+            article{
+                width: 100% !important;
+
+                header{
+                    padding: 15px 7px 0 13px !important;
+                    background: #fff !important;
+
+                    h1{
+                        font-size: 1.15em !important;
+                    }
+                }
+
+                .single-content{
+                    padding: 5px 13px 20px !important;
+
+                    h2{
+                        margin-left: 0 !important;
+                        margin-right: 0 !important;
+                    }
+                }
+
+                footer{
+                    padding: 0 !important;
+
+                    aside{
+                        padding: 5px 13px 20px !important;
+                        
+
+                        .ss ul{
+                            margin: 0 auto !important;
+                            width: 240px;
+
+                            li{
+                                width: 50px !important;
+                                margin: 0 5px !important;
+    
+                                a{
+                                    padding: 10px !important;
+                                    
+        
+                                    span{
+                                        display: none;
+                                    }
+                                }
+                            }  
+                        } 
+                    }
+                }
+            }
+        }
+
+        .side{
+            width: 100% !important;
+
+            .side-1,
+            .side-2,
+            .side-3,
+            .side-4{
+                width: 100% !important;
+                margin-bottom: 0 !important;
+            }
+    
+        }
+    }
+    
+}
+
+
 footer{
     text-align: center;
     clear: both;
@@ -745,8 +860,11 @@ footer{
     .hm{
         font-weight: 700;
         font-size: 1.2em;
-        color: #807171;
         padding: 5px 0;
+
+        a{
+            color: #807171;
+        }
     }
 
     .footer-02{
@@ -764,7 +882,6 @@ footer{
 
             .gray{
                 font-size: 15px;
-                text-decoration: none;
                 color: #6f6f6f;
 
             }

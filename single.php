@@ -36,13 +36,13 @@
                 <aside>
                     <div class="kanren">
                         <h4><img src="<?php $upload_dir = wp_upload_dir(); 
-                        echo $upload_dir['baseurl'] . $upload_dir['subdir'] . '/books.png'; ?>" 
+                        echo esc_url($upload_dir['baseurl'] . '/2022/04/books.png'); ?>" 
                         alt="books"></h4>
                     </div>
                     <div class="kanren-kizi my-4">
                         <p class="kanren-kizi__p">wordpressを学びたいはこちらが参考になるかも</p>
                         <a href="#" class="kizi">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png" alt="no-image" />
+                            <img src="<?php echo esc_url(get_template_directory_uri() .'/images/no-image.png') ?>" alt="no-image" />
                             <div class="kizi-title"><p>ここに参考の記事タイトルが入ります</p></div>
                         </a>
                     </div>

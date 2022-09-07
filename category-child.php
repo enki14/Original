@@ -18,52 +18,27 @@
             <div class="content__catInfo d-flex">
                 <div class="row">
                 <?php 
-                    // 子カテゴリの場合はterm_idを指定する
-                    $cat_posts = get_posts(array(
-                        'post_type' => 'post',
-                        'category' => $term_id,
-                        'orderby' => 'date',
-                        'order' => 'DESC',
-                        'posts_per_page' => -1
-                    ));
-                    if($cat_posts): 
-                        foreach($cat_posts as $post):
-                            setup_postdata($post);
+                    if(have_posts()): 
+                        while(have_posts()):
+                            the_post();
                 ?>
                     <article> 
                         <a href="<?php the_permalink(); ?>">
                         <?php if(has_post_thumbnail()): ?>
                             <?php the_post_thumbnail(); ?>
                         <?php else: ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png"/>
+                            <img src="<?php echo esc_url(get_template_directory_uri() .'/images/no-image.png') ?>" alt="no-image"/>
                         <?php endif; ?>
                             <h2 class="content__catInfo__h2 text-left"><?php the_title(); ?></h2>
                             
                         </a>
                         <span><i class="fa fa-clock-o" aria-hidden="true"></i><time><?php the_time('Y/m/d') ?></time></span>
                     </article>
-                    <?php endforeach; endif; wp_reset_postdata(); ?>
+                    <?php endwhile; endif; ?>
                 </div>
             </div>
-            <?php
-                $paged = get_query_var('paged', 1);
-                $args = array(
-                    'post_type' => 'post',
-                    'paged' => $paged
-                );
-                $the_query = new WP_Query($args);
-                echo '現在のページ：'. $paged;
-                echo '最大ページ数：'. $the_query->max_num_pages;
-                the_posts_pagination(
-                    array(
-                        'mide_size' => 5,
-                        'prev_next' => true,
-                        'prev_text' => __('<i class="fa-solid fa-angle-left"></i>'),
-                        'next_text' => __('<i class="fa-solid fa-angle-right"></i>'),
-                        'type' => 'list'
-                    )
-                );
-            ?>
+            <?php my_paginate(); ?>
+            <?php wp_reset_postdata(); ?>
         </div>
         <?php get_sidebar(); ?>
     </div>

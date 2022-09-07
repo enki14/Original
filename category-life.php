@@ -11,7 +11,7 @@
                 
                 <!-- サムネイル出力は第1がサイズ、第2がclass付与 -->
                 <div class="thumb-eria">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/357612.png" alt="house">
+                    <img src="<?php echo esc_url(get_template_directory_uri() .'/images/357612.png') ?>" alt="house">
                 </div>
                 <p class="post-disc">
                     「生活の知恵」カテゴリーでは、知っておくと役に立つ生活の知識や料理のコツ、
@@ -31,7 +31,7 @@
                             <?php if(has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail(); ?>
                             <?php else: ?>
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png"/>
+                                <img src="<?php echo esc_url(get_template_directory_uri() .'/images/no-image.png') ?>" alt="no-image"/>
                             <?php endif; ?>
                                 <h3><?php the_title(); ?></h3>
                             </a>

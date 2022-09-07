@@ -52,6 +52,7 @@ add_action('widgets_init', 'sample_widgets');
 
 
 // 固定ページにcategory-life.phpを読み込んで、「暮らし」のカテゴリ一覧を表示させた
+// 今は使ってない
 function include_shortcode($params = array()){
   shortcode_atts(array(
     'file' => 'default'
@@ -79,10 +80,34 @@ function my_script() {
   // 投稿ページのみ該当のjsファイルを読み込む
   // ハンドル名はregister_scriptの時と同じ
   if(is_single()){
-    wp_enqueue_script('header_fixed', get_template_directory_uri() . '/js/header-fixed.js', array('jquery'));
+    wp_enqueue_script('header_fixed', get_template_directory_uri() . '/js/header-fixed.js', array('jquery'),);
   }
 }
 add_action( 'wp_enqueue_scripts', 'my_script' );
+
+
+
+// 主にメインループで成立するページネーション
+// カテゴリページ用
+function my_paginate(){
+    global $wp_query, $paged;
+
+    echo  the_posts_pagination(
+      array(
+          'mide_size' => 5,
+          'prev_next' => true,
+          'prev_text' => __('<i class="fa-solid fa-angle-left"></i>'),
+          'next_text' => __('<i class="fa-solid fa-angle-right"></i>'),
+          'type' => 'list',
+          // ページの総数を取得
+          'total' => $wp_query->max_num_pages,
+          // 現在のページ番号を取得
+          'current' => ($paged ? $paged : 1)
+      )
+  );
+}
+
+
 
 
 

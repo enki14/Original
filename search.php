@@ -21,7 +21,7 @@
                             <?php if(has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail(); ?>
                             <?php else: ?>
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png"/>
+                                <img src="<?php echo esc_url(get_template_directory_uri() .'/images/no-image.png') ?>"/>
                             <?php endif; ?>
                                 <h2 class="content__catInfo__h2 text-left"><?php the_title(); ?></h2>
                                 

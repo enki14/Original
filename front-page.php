@@ -43,7 +43,7 @@
                     <div class="row">
                     <?php 
                         $paged = (int) get_query_var('paged');
-                        $tag_posts = get_posts(array(
+                        $tag_posts = new WP_Query(array(
                             'post_type' => 'post',
                             'tag_id' => 19,
                             // スペース付きのタグには、そのスペースをハイフンで埋める
@@ -53,11 +53,10 @@
                             'order' => 'DESC',
                             'paged' => $paged
                         ));
-                        global $post;
                     
-                        if($tag_posts):
-                                foreach($tag_posts as $post):
-                                    setup_postdata($post);
+                        if($tag_posts->have_posts()):
+                                while($tag_posts->have_posts()):
+                                    $tag_posts->the_post();
                     ?>
                         <?php if(has_post_thumbnail()): ?>
                             <a href="<?php the_permalink(); ?>" class="bg-white"> <!-- 記事をループで取得 -->
@@ -69,13 +68,13 @@
                         <?php else: ?>
                             <a href="<?php the_permalink(); ?>" class="bg-white"> <!-- 記事をループで取得 -->
                                 <article class="text-center bg-white">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/images/no-image.png"
+                                    <img src="<?php echo esc_url(get_template_directory_uri() .'/images/no-image.png') ?>"
                                     class="thumbSmall" />
                                     <h2 class="cntH2 text-left"><?php the_title(); ?></h2>
                                 </article>
                             </a>
                         <?php endif; ?> 
-                    <?php endforeach; endif; ?>
+                    <?php endwhile; endif; ?>
                     </div>
                 </div>
                 <?php
@@ -85,7 +84,7 @@
                             'prev_next' => true,
                             'prev_text' => __('<i class="fa-solid fa-angle-left"></i>'),
                             'next_text' => __('<i class="fa-solid fa-angle-right"></i>'),
-                            'current' => max( 1, get_query_var('paged') ),
+                            'total' => $tag_posts->max_num_pages,
                             'type' => 'list'
                         )    
                     );
